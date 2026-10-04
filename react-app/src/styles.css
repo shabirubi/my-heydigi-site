@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Noto+Sans+Hebrew:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=Arimo:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-background: hsl(195 8% 97%);
+  --color-foreground: hsl(195 32% 11%);
+  --color-card: hsl(195 6% 99%);
+  --color-card-foreground: hsl(195 32% 11%);
+  --color-muted: hsl(195 9% 93%);
+  --color-muted-foreground: hsl(195 14% 38%);
+  --color-border: hsl(195 9% 86%);
+  --color-input: hsl(195 9% 86%);
+  --color-primary: hsl(195 83% 38%);
+  --color-primary-foreground: hsl(195 25% 98%);
+  --color-secondary: hsl(195 9% 90%);
+  --color-secondary-foreground: hsl(195 32% 14%);
+  --color-accent: hsl(44 83% 42%);
+  --color-accent-foreground: hsl(44 25% 98%);
+  --color-ring: hsl(195 83% 38%);
+  --color-destructive: hsl(2 70% 44%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --radius: 9999px;
+  --text-display: clamp(3.75rem, 11vw, 7rem);
+  --text-h1: clamp(2.75rem, 7vw, 5.04rem);
+  --text-h2: clamp(2rem, 4.6vw, 3.36rem);
+  --text-h3: clamp(1.375rem, 2.4vw, 2rem);
+  --text-body: clamp(1rem, 1.2vw, 1.1875rem);
+  --text-caption: clamp(0.8125rem, 1vw, 0.9375rem);
+  --space-section: 7.5rem;
+  --space-gutter: 1rem;
+  --space-block: 2rem;
+  --container-max: 64rem;
+  --shadow-soft: 0 1px 0 0 hsl(195 9% 86% / 0.8);
+  --shadow-lift: 0 24px 60px -32px hsl(195 40% 30% / 0.35);
+  --font-display: "Frank Ruhl Libre", serif;
+  --font-body: "Assistant", sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    text-rendering: geometricPrecision;
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
+
+.display-primary {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 6.5rem);
+  line-height: 1.16;
+  font-weight: 900;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+:lang(en) .display-primary {
+  font-size: var(--text-display);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.container-page {
+  width: min(calc(100% - (var(--space-gutter) * 2)), var(--container-max));
+  margin-inline: auto;
+}
+
+.rule-top { border-top: 1px solid var(--color-border); }
+.rule-bottom { border-bottom: 1px solid var(--color-border); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+html, body, #root { min-height: 100%; background: var(--color-background); color: var(--color-foreground); }
+
+/* HEYDIGI_HEBREW_TYPOGRAPHY_LOCK */
+:root {
+  --font-display-he: 'Frank Ruhl Libre', 'Assistant', 'Rubik', 'Noto Sans Hebrew', system-ui, sans-serif;
+  --font-body-he: 'Assistant', 'Assistant', 'Noto Sans Hebrew', 'Arimo', system-ui, sans-serif;
+  --font-display: var(--font-display-he);
+  --font-body: var(--font-body-he);
+}
+
+html,
+body,
+#root {
+  direction: rtl !important;
+}
+
+body {
+  font-family: var(--font-body-he) !important;
+  text-align: right;
+  font-feature-settings: "kern";
+  font-optical-sizing: auto;
+  line-height: 1.6;
+}
+
+body *:not(i):not(svg):not(code):not(pre):not([class*="icon"]):not([class*="fa-"]) {
+  font-family: var(--font-body-he) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-text,
+.hero-text,
+.font-display,
+.font-serif {
+  font-family: var(--font-display-he) !important;
+}
+
+.font-sans,
+.font-body {
+  font-family: var(--font-body-he) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-text,
+.hero-text {
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+h1 { line-height: 1.15; }
+p, li { line-height: 1.7; }
+
+/* Per-element BiDi: resolves punctuation & line-wrap for Hebrew paragraphs
+   even when a nested flex/grid parent overrides direction. */
+p, li, span, a, blockquote, figcaption, label, button, h1, h2, h3, h4, h5, h6 {
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+/* END_HEYDIGI_HEBREW_TYPOGRAPHY_LOCK */
